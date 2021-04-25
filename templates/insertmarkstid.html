@@ -1,0 +1,44 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+            <div class="card-body align-items-center d-flex justify-content-center">     
+                <div class="row mb-4">
+                    {% if cresults is not none %}
+                    <div class="col-lg-12 col-sm-16">
+                      <h3 class="h3 text-center">INSERT MARKS</h3>  
+                    </div>
+<center><lottie-player src="https://assets9.lottiefiles.com/private_files/lf30_hilbd2uq.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player></center>
+                    <div class="card-body">
+							    <form action="insertmarksdetails" method="POST" class="mt-4">
+                                    <div class="form-group text-center">
+                                        <div class="form-group">
+                                            <label class="my-1 mr-2" for="livebox">Choose Exam ID:</label>
+                                            <select class="custom-select my-1 mr-sm-2" id="livebox" name="choosetid" required>
+                                                {% for test in cresults %}
+                                                <option value={{test}}>{{test}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    <input type="submit" class="btn btn-block btn-primary" value="VIEW & INSERT"/>
+                                </form>
+                                </div>
+                                {% else %}
+                                <div class="col-lg-12 col-sm-16">
+                                    <center><lottie-player src="https://assets7.lottiefiles.com/datafiles/vhvOcuUkH41HdrL/data.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player></center>
+                                    <h3 class="h3 text-center">
+                                        No Records Found!
+                                        <br>
+                                        Or
+                                        <br>
+                                        All Marks are inserted already!
+                                    </h3>  
+                                  </div>        
+                                                      {% endif %}
+                            </div>
+                        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

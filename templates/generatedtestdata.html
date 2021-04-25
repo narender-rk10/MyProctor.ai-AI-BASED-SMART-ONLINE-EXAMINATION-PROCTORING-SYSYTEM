@@ -1,0 +1,44 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card border-light shadow-sm">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col">
+                            <h2 class="h5">Generated Q&A</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="example" class="table align-items-center table-flush">
+                            <thead>
+                                <th>Question</th>
+                                <th>Answer</th>
+                            </thead>
+                <tbody>
+              
+{% for qa in cresults %}
+    <tr>
+          <td>{{ qa[0] }}</td>
+          <td>{{ qa[1] }}</td>
+    </tr>
+{% endfor %}
+
+</tbody>
+            </table>
+        </div>
+    </div>
+            </div>
+        </div>
+            <script>
+                $(document).ready(function() {
+                $('#example').DataTable( {
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                } );
+            } );
+            </script>
+{% endblock %}

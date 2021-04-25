@@ -1,0 +1,42 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+            <div class="card-body align-items-center d-flex justify-content-center">     
+                <div class="row mb-4">
+                    {% if(cresults is not none and cresults) %}
+                    <div class="col-lg-12 col-sm-16">
+                      <h3 class="h3 text-center">VIEW LIVE OF STUDENTS </h3>  
+                    </div>
+                    <div class="card-body">
+							    <form action="/live_monitoring" method="POST" class="mt-4">
+                                    <div class="form-group text-center">
+                                        <div class="form-group">
+                                            <label class="my-1 mr-2" for="livebox">Choose Exam ID:</label>
+                                            <select class="custom-select my-1 mr-sm-2" id="livebox" name="choosetid" required>
+                                                {% for test in cresults %}
+                                                <option value={{test}}>{{test}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    <input type="submit" class="btn btn-block btn-primary" value="VIEW LIVE MONITORING OF EXAM"/>
+                                </form>
+                    </div>
+                    {% else %}
+                    <div class="col-lg-12 col-sm-16">
+                        <h3 class="h3 text-center">
+                            No Records Found!
+                            <br>
+                            Or
+                            <br>
+                            Note: Only Live Exam ID's are shown between duration of the Exam.
+                        </h3>  
+                      </div>
+                    {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

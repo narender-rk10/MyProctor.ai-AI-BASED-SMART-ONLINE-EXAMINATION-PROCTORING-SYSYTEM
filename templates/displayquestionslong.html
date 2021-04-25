@@ -1,0 +1,47 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+            <div class="card-body align-items-center d-flex justify-content-center">     
+                <div class="row mb-4">
+                    <div class="col-lg-12 col-sm-16">
+                      <h3 class="h3 text-center">DISPLAY QUESTIONS</h3>  
+                    </div>
+                    <div class="card-body justify-content-md-center">
+                        <div class="table-responsive">
+                            <table id="example" class="display nowrap" style="width:100%">
+                                <thead class="thead-light">
+                                    <tr>
+                    <th class="border-0" scope="col" >QID</th>
+                    <th class="border-0" scope="col" >QUESTION</th>
+                    <th class="border-0" scope="col" >MARKS</th>
+                </tr>
+                 <tbody>
+{% for res in callresults%}
+              <tr>
+                    <td>{{res['qid']}}</td>
+                    <td>{{res['q']}}</td>
+                    <td>{{res['marks']}}</td>
+                   </tr>
+{% endfor %}
+                      </tbody>
+            </table>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+</script>
+{% endblock %}

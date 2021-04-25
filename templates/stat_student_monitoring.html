@@ -1,0 +1,110 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+            <div class="card-body align-items-center d-flex justify-content-center">     
+                <div class="row mb-4">
+                    <div class="col-lg-12 col-sm-16">
+                      <h3 class="h3 text-center">STUDENT MONITORING STATISTICS of {{testid}} of {{email}}</h3>  
+                    </div>
+                    <p></p>
+                    <div class="row">
+                        <div class="col-12">
+                         <div class="card-deck">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <div class="icon icon-shape icon-md icon-shape-primary rounded me-4 me-sm-0"><span class="fas fa-binoculars"></span></div>
+                                    <p></p>
+                                    <h2 class="h5 center-block">Total Logs</h2>
+                                    <h3 class="h2 mb-1 center-block" id="tot"></h3>
+                                    <button class="btn btn-block btn-primary"  onclick="location.href='http://localhost:5000/displaystudentslogs/{{testid}}/{{email}}'">VIEW</button>
+                                </div>
+                            </div>
+						<div class="card shadow-sm">
+                            <div class="card-body">
+                                <div class="icon icon-shape icon-md icon-shape-primary rounded me-4 me-sm-0"><span class="fas fa-window-restore"></span></div>
+                                <p></p>
+                                <h2 class="h5 center-block">Window Events</h2>
+                                <h3 class="h2 mb-1 center-block" id="win"></h3>
+                                <button class="btn btn-block btn-primary"  onclick="location.href='http://localhost:5000/wineventstudentslogs/{{testid}}/{{email}}'">VIEW</button>
+                            </div>
+                        </div>
+                         </div>
+                        </div>
+                    </div>
+                    <p></p>
+                    <div class="row">
+                        <div class="col-12">
+                         <div class="card-deck">
+                            <div class="card shadow-sm">
+                            <div class="card-body">
+                                <div class="icon icon-shape icon-md icon-shape-primary rounded me-4 me-sm-0"><span class="fas fa-mobile-alt"></span></div>
+                                <p></p>
+                                <h2 class="h5">Mobile Detected</h2>
+                                <h3 class="h2 mb-1" id="mob"></h3>
+                                <button class="btn btn-block btn-primary"  onclick="location.href='http://localhost:5000/mobdisplaystudentslogs/{{testid}}/{{email}}'">VIEW</button>
+                            </div>
+                            </div>
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <div class="icon icon-shape icon-md icon-shape-primary rounded me-4 me-sm-0"><span class="fas fa-user-friends"></span></div>
+                                    <p></p>
+                                    <h2 class="h5">More than 1 Person Detected Events</h2>
+                                    <h3 class="h2 mb-1" id="per"></h3>
+                                    <button class="btn btn-block btn-primary"  onclick="location.href='http://localhost:5000/persondisplaystudentslogs/{{testid}}/{{email}}'">VIEW</button>
+                                </div>
+                              </div>
+                    </div>
+                          </div>
+                    </div>
+                    <p></p>
+                    <div class="row">
+                        <div class="col-12">
+                         <div class="card-deck">
+                            <div class="card shadow-sm">
+                            <div class="card-body">
+                                <div class="icon icon-shape icon-md icon-shape-primary rounded me-4 me-sm-0"><span class="fas fa-microphone"></span></div>
+                                <p></p>
+                                <h2 class="h5">Audio Monitoring</h2>
+                                <h3 class="h2 mb-1" id="mob"></h3>
+                                <button class="btn btn-block btn-primary"  onclick="location.href='http://localhost:5000/audiodisplaystudentslogs/{{testid}}/{{email}}'">VIEW</button>
+                            </div>
+                            </div>
+                            </div>
+            </div>
+                        </div>
+        </div>
+                </div>
+            </div>
+<script>
+    var tid = "{{testid}}";
+    var eid = "{{email}}";
+
+    var updateStudentMonitoring = function() {
+        $.ajax({
+        type : 'POST',
+        url: "/ajaxstudentmonitoringstats/"+tid+"/"+eid,
+        contentType: 'application/json;charset=UTF-8',
+        cache: false,
+        success: function(msg) {
+            $("#win").html(msg.win);
+            $("#mob").html(msg.mob);
+            $("#per").html(msg.per);
+            $("#tot").html(msg.tot);
+		},
+			error: function(jqXHR, textStatus, errorThrown) {
+				$("#msg1").html("<span style='color:red;'>" + textStatus + " " + errorThrown + "</span>");
+		}
+});
+}
+
+$(document).ready(function(){
+
+updateStudentMonitoring();
+var refInterval = window.setInterval('updateStudentMonitoring()', 5000);
+
+    });
+
+</script>
+{% endblock %}

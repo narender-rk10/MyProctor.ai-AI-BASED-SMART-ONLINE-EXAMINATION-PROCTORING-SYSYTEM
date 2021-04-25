@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block body %}
+<main>
+    <section class="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
+               <div class="container">
+                       <div class="col-12 d-flex align-items-center justify-content-center">
+                           <div class="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-650">
+                               <div class="text-center text-md-center mb-4 mt-md-0">
+                                   <h1 class="mb-0 h3">Verify OTP for lost password</h1>
+                               </div>
+                               <img src="{{ url_for('static', filename='otp_security.png') }}">
+                               <form action="" method="POST" class="mt-4">
+                                    <div class="form-group">
+                                        <label>OTP</label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><span class="fas fa-key"></span></span>
+                                            </div>
+                                            <input name="fpotp" type="text" class="form-control"  placeholder="Enter OTP" pattern="\d*" maxlength="5" required>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-block btn-primary">VERIFY OTP</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

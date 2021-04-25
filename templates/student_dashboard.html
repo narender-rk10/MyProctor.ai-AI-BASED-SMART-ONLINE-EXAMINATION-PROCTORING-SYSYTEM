@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>MyProctor.ai</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='volt/assets/img/favicon/apple-touch-icon.png') }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='volt/assets/img/favicon/favicon-32x32.png') }}">
+<link rel="icon" type="image/png" sizes="16x16"  href="{{ url_for('static', filename='volt/assets/img/favicon/favicon-16x16.png') }}">
+<link rel="manifest" href="{{ url_for('static', filename='volt/assets/img/favicon/site.webmanifest') }}">
+
+<!-- Fontawesome -->
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='volt/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}">
+
+<!-- Volt CSS -->
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='volt/css/volt.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.15.7/sweetalert2.min.js" integrity="sha512-IHQXMp2ha/aGMPumvzKLQEs9OrPhIOaEXxQGV5vnysMtEmNNcmUqk82ywqw7IbbvrzP5R3Hormh60UVDBB98yg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.15.7/sweetalert2.all.js" integrity="sha512-uRc/2ZGOQYtxuR4Uoq8K13eLYuGFWyW3P/U8/qI2wP3BuHQxFhuoiEreDpC80/L6HbPM5IhAVKgK8l7lWwyJkw==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.15.7/sweetalert2.all.min.js" integrity="sha512-S8dy60Ic3uMzmNBB0ocD0TaIBdciM2JLjG2ZRaOhjNwYYO6I1aeRg/mY+T/x4WSx9oh42HvqHB0c7aK3d17Qog==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.15.7/sweetalert2.css" integrity="sha512-3Mf7x3QC98zKhMBTTGj5fDu2wQE9bgC/MmyFLRuyUTWZRWM4txPrzVfWqrCOWs9Il79iEw5T6+N7fbXXSUafrQ==" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.15.7/sweetalert2.js" integrity="sha512-/2LAWgYlRv0SU4+anDImXAEXGumWtSgZEpRkr6NJ7ehenRBRhWjpJx350BLc+ddOy024/vLjI6ymeDmfAuqPdQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.15.7/sweetalert2.min.css" integrity="sha512-qZl4JQ3EiQuvTo3ccVPELbEdBQToJs6T40BSBYHBHGJUpf2f7J4DuOIRzREH9v8OguLY3SgFHULfF+Kf4wGRxw==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+{% block head %}{% endblock %}
+  </head>
+  <body>
+    <script type="text/javascript">
+      window.addEventListener('selectstart', function(e){ e.preventDefault(); });
+        $(document).ready(function () {
+            //Disable cut copy paste
+            $('body').bind('select cut copy paste', function (e) {
+                e.preventDefault();
+            });
+            
+            //Disable mouse right click
+            $("body").on("contextmenu",function(e){
+                return false;
+            });
+        });
+        /** TO DISABLE SCREEN CAPTURE **/
+document.addEventListener('keyup', (e) => {
+    if (e.key == 'PrintScreen') {
+        navigator.clipboard.writeText('');
+        alert('Screenshots disabled!');
+    }
+});
+
+/** TO DISABLE PRINTS WHIT CTRL+P **/
+document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.key == 'p') {
+        alert('This section is not allowed to print or export to PDF');
+        e.cancelBubble = true;
+        e.preventDefault();
+        e.stopImmediatePropagation();
+    }
+});
+
+function funLogout () {
+
+swal.fire({
+  title: 'Are you sure?',
+  text: "Do you really want to logout?",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, Logout me!',
+  cancelButtonText: 'No!',
+  confirmButtonColor: '#d33',
+  cancelButtonColor: '#202124',
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+              $.ajax({
+                    type: "POST",
+                    url: "/logout",
+                    success: function(response){
+                      if(response=="success")
+                      {
+                      console.log(response);
+    window.location.href = "/";
+                      }
+}
+                });  
+      swal.fire(
+      'Success!',
+      'You are successfully has been sign out from the system.',
+      'success'
+    )
+  } else if (
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swal.fire(
+      'Cancelled',
+      'Logout cancelled.',
+      'error'
+    )
+  }
+})
+}
+
+function funStartExam()
+{
+  Swal.fire({
+  title: '<strong>BEFORE EXAM LOGIN RULES</strong>',
+  icon: 'warning',
+  html:
+    '<h5>ONLINE EXAM RULES TO BE FOLLOWED STRICTLY</h5>, ' +
+    '<ol><li>Dont minimize the window it will be monitored.</li><li>Check that your camera is proper.</li><li>Dont try to use mobile or any other material it will be monitored and strict action will be taken.</li><li>Use calculator which is given by our system not from your laptop/desktop/mobile.</li><li>Dont use incognito browser & also check that your cookies are enabled.</li><li>Any problem occurs call directly to customer care +91 9320907041 or care@narenderkeswani.com.</li></ol>',
+  showCloseButton: false,
+  showCancelButton: false,
+  focusConfirm: true,
+  confirmButtonColor: '#202124',
+  confirmButtonText:
+    'OK, BEGIN EXAM!',
+  confirmButtonAriaLabel: 'We are abide by rules!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    window.location.href = "/give-test";
+  }
+})
+}
+</script>
+
+        <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-md-none">
+            <a class="navbar-brand me-lg-5" href="/professor_index">
+              <center><lottie-player src="https://assets1.lottiefiles.com/packages/lf20_wEt2nn.json"  background="transparent"  speed="1"  style="width: 75px; height: 50px;"  loop  autoplay></lottie-player></center>
+            </a>
+            <div class="d-flex align-items-center">
+                <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+
+        <nav id="sidebarMenu" class="sidebar d-md-block bg-dark text-white flex-md-column flex-row collapse" data-simplebar>
+          <div class="sidebar-inner px-4 pt-3">
+            <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
+              <div class="d-flex align-items-center">
+                <div class="user-avatar lg-avatar me-4">
+                  <img src="{{ url_for('static', filename='user-profile.png') }}" class="card-img-top rounded-circle border-white"
+                    alt="Bonnie Green">
+                </div>
+                <div class="d-block">
+                  <h2 class="h6">{{session.name}}</h2>
+                  <a href ="#" onclick="return funLogout()"class="btn btn-secondary text-dark btn-xs"><span
+                      class="me-2"><span class="fas fa-sign-out-alt"></span></span>Logout</a>
+                </div>
+              </div>
+              <div class="collapse-close d-md-none">
+                <a href="#sidebarMenu" class="fas fa-times" data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
+                  aria-controls="sidebarMenu" aria-expanded="true" aria-label="Toggle navigation"></a>
+              </div>
+            </div>
+
+        <ul class="nav flex-column pt-3 pt-md-0">
+          <li class="nav-item">
+            <a href ="#" onclick="return funStartExam()" class="nav-link">
+              <span class="sidebar-icon"><span class="fas fa-clipboard-list"></span></span>
+              <span class="sidebar-text">Give Exam</span>
+            </a>
+          </li>
+      
+          <li class="nav-item ">
+            <a href="/{{session.email}}/student_test_history" class="nav-link">
+              <span class="sidebar-icon"><span class="fas fa-history"></span></span>
+              <span class="sidebar-text">Exam History</span>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a href="/{{session.email}}/tests-given" class="nav-link">
+              <span class="sidebar-icon"><span class="fas fa-poll"></span></span>
+              <span class="sidebar-text">Results</span>
+            </a>
+          </li>
+          <li role="separator" class="dropdown-divider mt-4 mb-3 border-black"></li>
+          <li class="nav-item ">
+            <a href="/report_student" class="nav-link">
+              <span class="sidebar-icon"><span class="fas fa-bug"></span></span>
+              <span class="sidebar-text">Report Problems</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/changepassword_student" class="nav-link d-flex align-items-center">
+              <span class="sidebar-icon"><span class="fas fa-key"></span></span>
+              <span class="sidebar-text">Change Password</span>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href ="#" onclick="return funLogout()"
+            class="btn btn-secondary d-flex align-items-center justify-content-center">
+              <span class="sidebar-icon"><span class="fas fa-sign-out-alt"> Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+        
+<main class="content">
+<nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0">
+<div class="container-fluid px-0">
+<div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
+  <div class="h-100 row align-items-center">
+              {% include 'includes/_messages.html' %}
+              {% block body %}{% endblock %}
+              <footer id="sticky-footer" class="py-4">
+                <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
+                              <p class="font-weight-bold font-medium mb-0">Copyright © MyProctor.ai
+                                  <span class="current-year">
+                                    <script>document.write(new Date().getFullYear())</script>
+                                  </span>. All rights reserved.</p>
+                </div><br>
+                <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
+                      <p class="font-weight-bold font-small mb-0">
+                        <span><a href="https://www.narenderkeswani.com/">
+                          Made with &#128151 By NARENDER KESWANI</a></span></p>
+              </div>
+              </footer>
+  </div>
+            </div>
+         </div>
+</nav>
+    </main>
+    
+    <script>
+
+// $(window).on('beforeunload', function() {
+//   alert("abc")
+// $.ajax({
+//                     type: "POST",
+//                     url: "/logoutWindowClose"
+//                    });});
+</script>
+
+ <!-- Core -->
+ <script src="{{ url_for('static', filename='volt/vendor/@popperjs/core/dist/umd/popper.min.js') }}"></script>
+ <script src="{{ url_for('static', filename='volt/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+ 
+ <!-- Vendor JS -->
+ <script src="{{ url_for('static', filename='volt/vendor/onscreen/dist/on-screen.umd.min.js') }}"></script>
+ 
+ <!-- Slider -->
+ <script src="{{ url_for('static', filename='volt/vendor/nouislider/distribute/nouislider.min.js') }}"></script>
+ 
+ <!-- Smooth scroll -->
+ <script src="{{ url_for('static', filename='volt/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
+ 
+ <!-- Charts -->
+ <script src="{{ url_for('static', filename='volt/vendor/chartist/dist/chartist.min.js') }}"></script>
+ <script src="{{ url_for('static', filename='volt/vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js') }}"></script>
+ 
+ <!-- Datepicker -->
+ <script src="{{ url_for('static', filename='volt/vendor/vanillajs-datepicker/dist/js/datepicker.min.js') }}"></script>
+ 
+ <!-- Sweet Alerts 2 -->
+ <script src="{{ url_for('static', filename='volt/vendor/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
+ 
+ <!-- Moment JS -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+ 
+ <!-- Vanilla JS Datepicker -->
+ <script src="{{ url_for('static', filename='volt/vendor/vanillajs-datepicker/dist/js/datepicker.min.js') }}"></script>
+ 
+ <!-- Notyf -->
+ <script src="{{ url_for('static', filename='volt/vendor/notyf/notyf.min.js') }}"></script>
+ 
+ <!-- Simplebar -->
+ <script src="{{ url_for('static', filename='volt/vendor/simplebar/dist/simplebar.min.js') }}"></script>
+ 
+ <!-- Github buttons -->
+ <script async defer src="https://buttons.github.io/buttons.js"></script>
+ 
+ <!-- Volt JS -->
+ <script src="{{ url_for('static', filename='volt/assets/js/volt.js') }}"></script>
+
+</body>
+</html>

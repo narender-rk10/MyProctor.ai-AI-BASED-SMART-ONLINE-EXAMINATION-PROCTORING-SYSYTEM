@@ -1,0 +1,38 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+            <div class="card-body align-items-center d-flex justify-content-center">     
+                <div class="row mb-4">
+                    <div class="col-lg-12 col-sm-16">
+                      <h3 class="h3 text-center">GENERATE QUESTIONS & ANSWERS</h3>  
+                    </div>
+<center><lottie-player src="https://assets3.lottiefiles.com/packages/lf20_6CrYF1.json"  background="transparent"  speed="1"  style="width: 400px; height: 300px;"  loop  autoplay></lottie-player></center>
+                    <div class="card-body">
+                              <form method="POST" action="test_generate">
+                                <div class="mb-4">
+                                  <div class="form-group">
+                                      <label class="h6" for="exampleFormControlTextarea1">Input Text</label>
+                                        <textarea name="itext" class="form-control" placeholder="Input Text?" rows="6" required></textarea>
+                                    </div>    
+                                    <div class="form-group">
+                                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Choose Question Type</label>
+                                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="test_type" required>
+                                            <option value="objective">Objective</option>
+                                            <option value="subjective">Subjective</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="h6" for="exampleFormControlTextarea1">No of Questions</label>
+                                        <input type="number" name="noq" class="form-control" placeholder="No. of Questions" min="1" required>
+                                    </div>  
+    <input type="submit" class="btn btn-primary" value="Generate">
+  </form>
+  </div>
+</div>
+</div>
+</div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+  <div class="col-12 mb-4">
+      <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+          <div class="card-body align-items-center d-flex justify-content-center">     
+              <div class="row mb-4">
+                  <div class="col-lg-12 col-sm-16">
+                    <h3 class="h3 text-center">STUDENT AUDIO LOGS of {{testid}} of {{email}}</h3>  
+                  </div>
+                  <div class="card-body justify-content-md-center">
+                      <div class="table-responsive">
+                          <table id="example" class="display nowrap" style="width:100%">
+                              <thead class="thead-light">
+                                  <tr>
+<th class="border-0" scope="col" >NAME</th>
+<th class="border-0" scope="col" >AUDIO</th>
+<th class="border-0" scope="col" >PREDICTION</th>
+<th class="border-0" scope="col" >TIME</th>
+</tr>
+<tbody>
+  {% for res in callresults %}
+  <tr>
+  <td>{{res['name']}}</td>
+  <td>{{res['voice_db']}}</td>
+  <td>
+  {% if res['voice_db'] < 10 %}
+  <h6 class="text-primary"> Normal</h6>
+  {% elif res['voice_db'] >= 10 and res['voice_db'] < 20 %}
+  <h6 class="text-muted">Little Disturbance</h6>
+  {% else %}
+  <h6 class="text-danger">More Disturbance</h6>
+  {% endif %}
+  </td>
+  <td>{{res['log_time']}}</td>
+  </tr>
+  {% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+      </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+  $('#example').DataTable( {
+      dom: 'Bfrtip',
+      buttons: [
+          'copy', 'csv', 'excel', 'pdf', 'print'
+      ]
+  } );
+} );
+</script>
+{% endblock %}

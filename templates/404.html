@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>MyProctor.ai</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='volt/assets/img/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='volt/assets/img/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16"  href="{{ url_for('static', filename='volt/assets/img/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='volt/assets/img/favicon/site.webmanifest') }}">
+    <link rel="mask-icon" color="#ffffff"  href="{{ url_for('static', filename='volt/static/assets/img/favicon/safari-pinned-tab.svg') }}">
+    
+    <!-- Fontawesome -->
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='volt/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}">
+    
+    <!-- Pixel CSS -->
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='volt/css/volt.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+    {% block head %}{% endblock %}
+    
+</head>
+
+<body>    
+    <main>
+        <section class="vh-100 d-flex align-items-center justify-content-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center d-flex align-items-center justify-content-center">
+                        <div>
+                            <img class="img-fluid w-50" src="{{ url_for('static', filename='volt/assets/img/illustrations/404.svg') }}" alt="404 not found">
+                            <h1 class="mt-5">Page not <span class="fw-bolder text-primary">found</span></h1>
+                            <p class="lead my-4">Oops! Looks like you followed a bad link. If you think this is a
+                                problem with us, please tell us.</p>
+                            <a class="btn btn-dark animate-hover" href="/"><i class="fas fa-chevron-left me-3 ps-2 animate-left-3"></i>Go back home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="sticky-footer" class="py-4">
+        <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
+                      <p class="font-weight-bold font-medium mb-0">Copyright © MyProctor.ai
+                          <span class="current-year">
+                            <script>document.write(new Date().getFullYear())</script>
+                          </span>. All rights reserved.</p>
+        </div><br>
+        <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
+              <p class="font-weight-bold font-small mb-0">
+                <span><a href="https://www.narenderkeswani.com/">
+                  Made with &#128151 By NARENDER KESWANI</a></span></p>
+      </div>
+      </footer>
+      
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- pixel JS -->
+<script src="{{ url_for('static', filename='volt/assets/js/volt.js') }}"></script>
+
+<!-- Core -->
+<script src="{{ url_for('static', filename='volt/vendor/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='volt/vendor/popper.js/dist/umd/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='volt/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='volt/vendor/headroom.js/dist/headroom.min.js') }}"></script>
+
+<!-- Vendor JS -->
+<script src="{{ url_for('static', filename='volt/vendor/onscreen/dist/on-screen.umd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='volt/vendor/nouislider/distribute/nouislider.min.js') }}"></script>
+<script src="{{ url_for('static', filename='volt/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ url_for('static', filename='volt/vendor/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename='volt/vendor/jarallax/dist/jarallax.min.js') }}"></script>
+<script src="{{ url_for('static', filename='volt/vendor/jquery.counterup/jquery.counterup.min.js') }}"></script>
+<script src="{{ url_for('static', filename='volt/vendor/jquery-countdown/dist/jquery.countdown.min.js') }}"></script>
+<script src="{{ url_for('static', filename='volt/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
+<script src="{{ url_for('static', filename='volt/vendor/prismjs/prism.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% block body %}
+<main>
+    <section class="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
+                       <div class="container">
+                                        <div class="col-12 d-flex align-items-center justify-content-center">
+                                            <div class="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-650">
+                                                <div class="text-center text-md-center mb-4 mt-md-0">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-12 col-xl-8 text-center">
+                                                            <h1 class="display-2 mb-3">Get in touch today</h1>
+                                                            <p class="lead">Have a new project in mind? Drop us a line about your project needs, we answer same day.</p>        
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <img src="{{ url_for('static', filename='contact_us_desc.png') }}">
+                            <form action="" method="POST">
+                                <div class="form-group mb-4">
+                                    <label class="h6" for="exampleInputName1">Your Name</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><span class="far fa-user"></span></span>
+                                        </div>
+                                        <input name="cname" class="form-control" placeholder="EG. John David" type="text" required>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label class="h6" for="exampleInputEmail1">Email address</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><span class="fas fa-at"></span></span>
+                                        </div>
+                                        <input name="cemail" class="form-control" placeholder="example@company.com" type="email" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="h6" for="exampleFormControlTextarea1">Your message</label>
+                                    <textarea name="cquery" class="form-control" placeholder="How can we help?" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-block rounded btn-secondary mt-5">Send message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+            </main>
+{% endblock %}

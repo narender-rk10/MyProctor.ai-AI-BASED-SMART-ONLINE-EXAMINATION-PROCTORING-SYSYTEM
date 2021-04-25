@@ -1,0 +1,63 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+    <div class="row align-items-center d-flex  justify-content-center">
+      <div class="col-12 mb-4">
+          <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+              <div class="card-body align-items-center d-flex justify-content-center">     
+                  <div class="row mb-4">
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+            <center><img src="static/stripe_payments.png" alt="pay_stripe" width="50%"></center><br>
+            <h3 class="text-primary mb-4 justify-content-center">
+              <center> Your Current Exam Points left are: {{callresults['examcredits']}}</center>
+              </h3>
+              <div class="card-header bg-white p-3 justify-content-center">
+                  <center>
+                  <span class="d-block">
+                      <span class="display-1 text-dark font-weight-bold">
+                          <span class="align-top font-medium">₹</span>499
+                  </span>
+                  <span class="text-primary mb-4">10 exams</span>
+                  </span>
+                </center>
+              </div>
+              <div class="card-body justify-content-center">
+                <center>
+                  <ul class="list-unstyled mb-4 justify-content-center">
+                      <li class="list-item pb-3 justify-content-center"><strong>Exam Analytics</strong></li>
+                      <li class="list-item pb-3 justify-content-center"><strong>Monitor Students</strong></li>
+                      <li class="list-item pb-3 justify-content-center"><strong>Unlimited Student Capacity</strong></li>
+                      <li class="list-item pb-3 justify-content-center"><strong>24 * 7 Community support </strong></li>
+                  </ul>
+                </center>
+                  <button type="button"id="checkout-button" class="btn btn-primary btn-block animate-up-1">Pay Now!</button>
+              </div>
+          </div>
+      </div>
+  </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+    var stripe = Stripe("pk_test_51ISHOsAGsy3DJu1jc1IfuLYDkED8d1QPRl5e8RTU7mdcZpELeGEysYFH4NfjLoPiIkRpghWUHmUH7QpOk1sgzM8X00prZwtaX9");
+    var checkoutButton = document.getElementById("checkout-button");
+    checkoutButton.addEventListener("click", function () {
+      fetch("/create-checkout-session", {
+        method: "POST",
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (session) {
+          return stripe.redirectToCheckout({ sessionId: session.id });
+        })
+        .then(function (result) {
+          if (result.error) {
+            alert(result.error.message);
+          }
+        })
+        .catch(function (error) {
+          console.error("Error:", error);
+        });
+    });
+  </script>
+{% endblock %}

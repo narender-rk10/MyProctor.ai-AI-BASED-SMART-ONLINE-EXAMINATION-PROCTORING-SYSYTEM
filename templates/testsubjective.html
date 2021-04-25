@@ -1,0 +1,109 @@
+{% extends 'exam_layout.html' %}
+{% block body %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/phsv717m7vf0lhfob05w821ex4q809e648m7irawbwu7lxb0/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>var tid = "{{test_id}}";</script>
+<main>
+  <section class="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
+             <div class="container">
+                     <div class="col-12 d-flex align-items-center justify-content-center">
+                         <div class="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-900">
+                             <div class="text-center text-md-center mb-4 mt-md-0">
+                                 <div class="card-body">
+                                  <div class="row">
+                                    <div class="col"><span><h4 class="display-6">Name: {{session['name']}}</h4></span></div>
+                                    <div class="col"><span><h4 class="display-6">Email: {{session['email']}}</h4></span></div>
+                                  </div>
+                                  </div>
+                             </div>
+                             <div class="row">
+                              <div class="form-group col-3">
+                                <div class="mb-0 h6">
+                                  SUBJECT: {{subject}}
+                                  </div>
+                                  </div>
+                                  <div class="form-group col-3">
+                                    <div class="mb-0 h6">
+                                      TOPIC: {{topic}}
+                                      </div>
+                                      </div>
+                                      <div class="form-group col-3">
+                                        <div class="mb-0 h6">
+                                          EXAM-ID: {{test_id}}
+                                          </div>
+                                          </div>
+                                          <div class="form-group col-3">
+                                            <div class="mb-0 h6">
+                                              TIME LEFT:<div id="time">{{duration}}                                                </div>
+                                              </div>
+                            </div>
+                            </div>
+                          <div class="card-body">
+                             <form action="" method="POST" id="subj" class="mt-4">
+                              <script>var i =1</script>
+                              {% for test in callresults %}
+                                 <div class="form-group">
+                                  <div class="mb-0 h4">
+                                    Q. <script>document.write(i++); </script> 
+                                          {{test["q"]}} [MARKS: {{test["marks"]}}]
+                                          </div>
+                                  </div>
+                                      <div class="form-group">
+                                          <label class="h6" for="exampleFormControlTextarea1">Answer:</label>
+                                          <textarea name="{{test['qid']}}" class="form-control" placeholder="Enter your answer here..." rows="6" required></textarea>
+                                      </div>                         
+      {% endfor %}
+      <input type="hidden" name="test_id" value="{{ test_id }}">
+      <input type="submit" class="btn btn-primary" value="Finish Exam">
+                             </form>
+           
+                             <div class="form-group">
+    <div class="container">
+      <div class="justify-content-center align-items-center">
+        <div id ="livecheck" style="width:320px; height:320px; display: none;">
+        <script src="https://tokbox.com/embed/embed/ot-embed.js?embedId=2020dbd9-0a89-472d-a60b-ca12ddfd48bc&room={{test_id}}"></script>
+      </div>
+      </div>
+    </div>
+
+  <div class="form-group">
+    <div class="container" id ="videocheck" style="display: none;">
+      <div class="justify-content-center align-items-center">
+      <video id="stream" width="320" height="320">
+        <canvas id="capture" width="320" height="320"></canvas>
+      </video>
+      </div>
+      </div>
+    </div>
+
+    </div>
+   </div>
+   <div>
+   </div>
+ </section>
+ </main>      
+  <script type="text/javascript" src="{{ url_for('static', filename='appsubjective.js') }}"></script>
+  <script>
+    var vid = "{{proctortypes}}";
+console.log(vid)
+if(vid == "0")
+{
+  document.getElementById('videocheck').style.display = "block"
+  startStreaming();
+  captureSnapshot();
+}
+else
+{
+  document.getElementById('livecheck').style.display = "block"
+}
+    </script>
+  <footer id="sticky-footer" class="py-4">
+    <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
+                  <p class="font-weight-bold font-medium mb-0">Copyright © MyProctor.ai
+                      <span class="current-year"><scrip>document.write(new Date().getFullYear())</scrip></span>. All rights reserved.</p>
+    </div><br>
+    <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
+          <p class="font-weight-bold font-small mb-0"><span>Made with &#128151 By NARENDER KESWANI</span></p>
+  </div>
+  </footer>
+{% endblock %}

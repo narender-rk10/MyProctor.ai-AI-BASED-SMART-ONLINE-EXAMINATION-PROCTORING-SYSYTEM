@@ -1,0 +1,39 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+  <div class="col-12 mb-4">
+      <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+          <div class="card-body align-items-center d-flex justify-content-center">     
+              <div class="row mb-4">
+                  <div class="col-lg-12 col-sm-16">
+                    <h3 class="h3 text-center">INSERT MARKS [SUBJECTIVE]</h3>  
+                  </div>
+                  <div class="card-body">
+                              <form method="POST" action="">
+                                {% for res in callresults %}
+                                <div class="mb-4">
+                                  <div class="form-group">
+                                    Q{{res['qid']}}.
+                                    {{res['q']}}
+                                    <br>
+                                    [Max. Marks {{res['marks']}}]
+                                      </div>   
+    <div class="form-group">
+      <label class="h6" for="exampleFormControlTextarea1">Answer</label>
+      <textarea class="form-control" rows="6" cols="50" readonly>{{res['ans']}}</textarea>
+        </div>
+      <div class="form-group">
+        <label class="h6" for="exampleFormControlTextarea1">Enter Marks</label>
+          <input type="number" name="{{res['qid']}}" class="form-control" max="{{res['marks']}}" value="{{res['inputmarks']}}" required>
+      </div>   
+      </div>
+      {% endfor %}
+    <p><input type="submit" class="btn btn-primary" value="Insert Marks"></p>
+  </form>
+  </div>
+</div>
+</div>
+</div>
+  </div>
+</div>
+{% endblock %}

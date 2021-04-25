@@ -1,0 +1,163 @@
+{% extends 'exam_layout.html' %}
+{% block body %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript"> var answers = "{{answers}}";</script>
+<script>var tid = "{{tid}}";</script>
+<main>
+  <section class="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
+             <div class="container">
+                     <div class="col-12 d-flex align-items-center justify-content-center">
+                         <div class="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-900">
+                             <div class="text-center text-md-center mb-4 mt-md-0">
+                                 <div class="card-body">
+                                  <div class="row">
+                                    <div class="col"><span><h4 class="display-6">Name: {{session['name']}}</h4></span></div>
+                                    <div class="col"><span><h4 class="display-6">Email: {{session['email']}}</h4></span></div>
+                                  </div>
+                                  </div>
+                             </div>
+                             <div class="row">
+                              <div class="form-group col-3">
+                                <div class="mb-0 h6">
+                                  SUBJECT: {{subject}}
+                                  </div>
+                                  </div>
+                                  <div class="form-group col-3">
+                                    <div class="mb-0 h6">
+                                      TOPIC: {{topic}}
+                                      </div>
+                                      </div>
+                                      <div class="form-group col-3">
+                                        <div class="mb-0 h6">
+                                          EXAM-ID: {{tid}}
+                                          </div>
+                                          </div>
+                                          <div class="form-group col-3">
+                                            <div class="mb-0 h6">
+                                              TIME LEFT:<div id="time">{{duration}}                                                </div>
+                                              </div>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="container">
+                              <div id="overlay">
+                                      <div class="row" id="question-list">
+                                        </div> 
+                                  </div>
+                                  </div>
+                                </div>
+                            <div class="form-group">
+                              <div class="mb-0 h4">
+                                <div id='queid'>Q.</div><div id="que">{{ q }}</div><div id='mark'> [MAX MARKS: {{ marks}}] </div>
+                                      </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="h6" for="exampleFormControlTextarea1">Select your Answer</label>
+                                <table id="options"  class="table">
+        <tr>
+          <td id='a'>𝐀. {{ a }}</td>
+        </tr>
+        <tr>
+          <td id='b'>𝐁. {{ b }}</td>
+        </tr>
+        <tr>
+          <td id='c'>𝐂. {{ c }}</td>
+        </tr>
+        <tr>
+          <td id='d'>𝐃. {{ d }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-3">
+        <div class="mb-0 h6">
+          <input type="button" value="Prev" id="prev" class="btn btn-primary btn-rounded">
+        </div>
+          </div>
+          <div class="form-group col-3">
+            <div class="mb-0 h6">
+              <input type="button" value="Next" id="next" class="btn btn-primary btn-rounded">
+            </div>
+              </div>
+              <div class="form-group col-3">
+                <div class="mb-0 h6">
+                  <input type="button" value="Submit" id="submit" class="btn btn-success btn-rounded">
+                </div>
+                  </div>
+                  <div class="form-group col-3">
+                    <div class="mb-0 h6">
+                      <button class="btn btn-primary btn-rounded" id="bookmark">Bookmark</button>
+                    </div>
+    </div>
+    </div>
+
+  <div class="form-group">
+  <div class="btn btn-block btn-primary" id="finish">Finish Test</div>
+  </div>
+
+  <div class="form-group">
+    <div class="container" id ="calccheck" style="display: none;">
+   <iframe src="/calc" style="height:500px;width:500px;" title="Iframe Example"></iframe> 
+</div>
+  </div>
+
+  <div class="form-group">
+    <div class="container">
+      <div class="justify-content-center align-items-center">
+        <div id="otEmbedContainer"  id ="livecheck" style="width:320px; height:320px; display: none;">
+        <script src="https://tokbox.com/embed/embed/ot-embed.js?embedId=2020dbd9-0a89-472d-a60b-ca12ddfd48bc&room={{tid}}"></script>
+      </div>
+      </div>
+    </div>
+
+  <div class="form-group">
+    <div class="container" id ="videocheck" style="display: none;">
+      <div class="justify-content-center align-items-center">
+      <video id="stream" width="320" height="320">
+        <canvas id="capture" width="320" height="320"></canvas>
+      </video>
+      </div>
+      </div>
+    </div>
+
+  </div>
+ </div>
+</div>
+</section>
+</main>
+  <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+  <script>
+   var cal = "{{calc}}";
+console.log(cal)
+if(cal == "1")
+{
+  document.getElementById('calccheck').style.display = "block"
+}
+else
+{
+  document.getElementById('calccheck').style.display = "none"
+}
+var vid = "{{proctortype}}";
+console.log(vid)
+if(vid == "0")
+{
+  document.getElementById('videocheck').style.display = "block"
+  startStreaming();
+  captureSnapshot();
+}
+else
+{
+  document.getElementById('livecheck').style.display = "block"
+}
+    </script>  
+  <footer id="sticky-footer" class="py-4">
+    <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
+                  <p class="font-weight-bold font-medium mb-0">Copyright © MyProctor.ai
+                      <span class="current-year"><script>document.write(new Date().getFullYear())</script></span>. All rights reserved.</p>
+    </div><br>
+    <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
+          <p class="font-weight-bold font-small mb-0"><span>Made with &#128151 By NARENDER KESWANI</span></p>
+  </div>
+  </footer>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+            <div class="card-body align-items-center d-flex justify-content-center">     
+                <div class="row mb-4">
+                    {% if tests is not none and tests %}
+                    <div class="col-lg-12 col-sm-16">
+        <h3 class="h3 text-center">EXAM HISTORY</h3> 
+                    </div> 
+<div class="card-body justify-content-md-center">
+    <center><lottie-player src="https://assets1.lottiefiles.com/packages/lf20_ljr4k6s1.json"  background="transparent"  speed="1"  style="width: 300px; height: 180px;"  loop  autoplay></lottie-player></center>
+        <div class="table-responsive">
+            <table id="example" class="table table-centered table-nowrap mb-0 rounded">
+                <thead class="thead-light">
+                    <tr>
+                                <th class="border-0" scope="col" >Test ID</th>
+                                <th class="border-0" scope="col" >Password</th>
+                                <th class="border-0" scope="col" >Subject</th>
+                                <th class="border-0" scope="col" >Topic</th>
+                                <th class="border-0" scope="col" >Share</th>
+                            </tr>
+							 <tbody>
+            {% for test in tests %}
+                            <tr>
+								<td>{{test['test_id']}}</td>
+                                <td>{{test['password']}}</td>
+								<td>{{test['subject']}}</td>
+								<td>{{test['topic']}}</td>
+                                <td><a class="btn btn-primary" href="/{{session.email}}/{{test['test_id']}}/share_details">Share</a></td>
+                             </tr>
+            {% endfor %}
+                                  </tbody>
+                        </table>
+                    </div>
+                </div>
+</div>
+{% else %}
+<div class="col-lg-12 col-sm-16">
+    <center><lottie-player src="https://assets7.lottiefiles.com/datafiles/vhvOcuUkH41HdrL/data.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player></center>
+    <h3 class="h3 text-center">
+        No Records Found!
+    </h3>  
+  </div>        
+                      {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+</script>
+{% endblock %}

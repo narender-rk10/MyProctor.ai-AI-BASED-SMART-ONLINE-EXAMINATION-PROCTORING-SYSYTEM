@@ -1,0 +1,231 @@
+{% extends 'layout.html' %}
+{% block body %}
+<main>
+    <section class="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
+               <div class="container">
+                       <div class="col-12 d-flex align-items-center justify-content-center">
+                           <div class="bg-white p-4 p-lg-5 w-100 fmxw-1000">
+                               <div class="text-center text-md-center mb-4 mt-md-0">
+                                   <h1 class="mb-0 h3">FAQ's</h1>
+                               </div>
+                               <img src="{{ url_for('static', filename='questions_desc.png') }}">
+<div class="accordion" id="accordionExample1">
+    <div class="card card-sm card-body border-light mb-0">
+        <a href="#panel-1" data-target="#panel-1" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-1">
+            <span class="h6 mb-0 font-weight-bold">General FAQ's</span>
+            <span class="icon"><i class="fas fa-plus"></i></span>
+        </a>
+        <div class="collapse" id="panel-1">
+        <div class="card-body">
+        <div class="qanda">
+        <h5>
+        How does MyProctor integrate with my learning management or test delivery system? </h5>
+        <hr>
+        <p>
+        Our platform integrates with all major learning system, including Blackboard, Canvas, Moodle, D2L, and more, with the option to utilize our API for custom integrations. Or we can even help you find a test delivery system if you are transitioning your program online from paper-based exams. </p>
+        </div>
+        <div class="qanda">
+        <h5>
+        How can you meet our high stakes requirements? </h5>
+        <hr>
+        <p>
+        We work with exams that have complex requirements all the time. Our Live+ service offers additional levels of customization and specialized proctor training for things like exam start procedures, security measures, and test-taker interaction rules. </p>
+        </div>
+        <div class="qanda">
+        <h5>
+        How do you handle high volumes? </h5>
+        <hr>
+        <p>
+        We operate multiple facilities around the world and our ability to scale has been tested and perfected over 12 years. We use historical information and technology solutions to aid us in determining needs for head-count, training, and other logistics. </p>
+        </div>
+        </div>
+        </div>
+        </div>
+
+    <div class="card card-sm card-body border-light mb-0">
+        <a href="#panel-2" data-target="#panel-2" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-2">
+            <span class="h6 mb-0 font-weight-bold">Compliance and Privacy FAQs</span>
+            <span class="icon"><i class="fas fa-plus"></i></span>
+        </a>
+        <div class="collapse" id="panel-2">
+            <div class="card-body">
+                <div class="qanda">
+                <h5>
+                What are some of the key focus areas in compliance? </h5>
+                <hr>
+                <p>
+                Privacy and data security are always top of mind for MyProctor. The laws are changing quickly in this area all across the globe, and we’re constantly enhancing our policies and practices to ensure we are protecting our users’ information and adhering to applicable privacy laws. Please see our compliance page for additional detail on our privacy commitments. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                How do you communicate these policies with test-takers? </h5>
+                <hr>
+                <p>
+                Test-takers can review our privacy policy at any time at Myproctor.ai/privacy-policy and see when it was last updated. We also communicate our privacy practices to users when they set up an account with us. When users begin an online testing session, we provide them with specific disclosures about the information that will be collected during their test session and how that information will be used and shared. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                Why does MyProctor need to access any test-taker data? </h5>
+                <hr>
+                <p>
+                Our key responsibility to clients and test-takers is to ensure fairness and integrity in the testing process. In a classroom, a proctor can physically observe students to make sure Susan hasn’t shown up to take Sarah’s test, and ensure that no one is breaking testing protocols. Because we are proctoring online, we use alternative methods to verify test-taker’s identity and to make sure that even though test-takers and proctors are in different locations, the testing environment is fair to everyone. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                Test-takers are concerned that MyProctor is selling or using their data for other purposes outside of proctoring. Is this true? </h5>
+                <hr>
+                <p>
+                No, we only use the data captured during test sessions to conduct online proctoring. As our Privacy Policy states: MyProctor does not use any test-taker’s personal information for any purpose other than for facilitating the proctoring of online exams. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                What do you do to make sure the testing process is fair and test-takers aren’t Googling answers or reading them off their palm? </h5>
+                <hr>
+                <p>
+                Depending on the parameters set by the test provider or institution, we can do several things, all of which are disclosed to the test-taker before the test starts. We can use an application to lock down access to the internet or other computer files during the test. This application doesn’t give anyone else access to the test-taker’s computer during the test and it doesn’t affect the user’s device after the test ends. We may also use video and audio recording during the test. With our Live+ solution, these recordings are monitored in real-time to identify any violations of the institution’s testing parameters. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                What happens with data once an exam ends? </h5>
+                <hr>
+                <p>
+                The proctoring session data are stored in US based encrypted servers (AES 256). The screen recordings and webcam audio/video are accessible to the institution for a period determined by the institution but is automatically deleted, per NIST 800-88 guidelines, after two years. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                Does MyProctor ever do anything else with the recordings or the student’s information? </h5>
+                <hr>
+                <p>
+                No. The information and recordings belong to the testing institution or organization and we act as a service provider. We do not own the data, the institution or organization does. We don’t sell or otherwise monetize any data from test-takers and we never market to test-takers nor allow any of our service providers to do so. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                How can test-takers be sure MyProctor is no longer accessing their computer? </h5>
+                <hr>
+                <p>
+                Once the LogMeIn applet is closed, the proctor and MyProctor will no longer be able to access the computer or any information on the computer. </p>
+                </div>
+                 <div class="qanda">
+                <h5>
+                What will my exam experience be like? </h5>
+                <hr>
+                <p>
+                Over the past 12 years, MyProctor has worked to balance exam security with test-taker experience. To ensure a level playing field, there are some technical steps our product and proctors must take. This may include getting a test-taker’s permission to remotely access their computer so we can ensure there are no unpermitted resources or applications running. LogMeIn’s security details can be found <a href="https://secure.logmeinrescue.com/welcome/documents/pdfs/rescue_architecture.pdf" target="_blank">here</a>. The test-taker can revoke access at any time. Our security procedures and processes are consistently evaluated and updated based on new technology and cheating patterns. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                Where can I find a copy of the most recent MyProctor privacy policy? </h5>
+                <hr>
+                <p>
+                https://www.MyProctor.com/privacy-policy..If you are a California resident, please refer to our CCPA policy https://www.MyProctor.com/ca-privacy-policy. </p>
+                </div>
+                </div>
+                </div>
+    </div>
+
+        <div class="card card-sm card-body border-light mb-0">
+        <a href="#panel-3" data-target="#panel-3" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-3">
+            <span class="h6 mb-0 font-weight-bold">Proctoring Process FAQs</span>
+            <span class="icon"><i class="fas fa-plus"></i></span>
+        </a>
+        <div class="collapse" id="panel-3">
+            <div class="card-body">
+                <div class="qanda">
+                <h5>
+                What do your proctors watch during an exam or in the professional review process? </h5>
+                <hr>
+                <p>
+                We're looking for potential aberrant behavior during exams such as looking off screen, accessing unpermitted materials, speaking aloud, or allowing other people in the room. Additionally, we use technology solutions to assist proctors in identifying activities that may warrant further inspection. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                Can proctors access test-taker computers without their knowledge? </h5>
+                <hr>
+                <p>
+                No. Test-takers must agree to give us permission to see their computer activity. In every session, the list of permissions granted are displayed and test-takers must click a button to agree. All proctor activity can be seen by test-takers in real-time, meaning they cannot perform any action without the test-taker's knowledge. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                Do you switch proctors during Live+ tests? </h5>
+                <hr>
+                <p>
+                Sometimes a test-taker may start and end their exam with a different proctor. This is because of lunch breaks and shift changes. Test-takers are not interrupted by the change, and are never left un-watched. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                How do proctors stop integrity violations while proctoring? </h5>
+                <hr>
+                <p>
+                During a Live+ exam, our proctors maintain the ability to use the mouse of a test-taker's computer and can communicate with them through the webcam. In the event that suspicious behavior is suspected, our Intervention Specialists will be invited to the session. These specialists' sole responsibility is to identify and prevent integrity violations, as defined by your organization. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                How does technology help the human proctor? </h5>
+                <hr>
+                <p>
+                Humans are good at detecting aberrant behavior, however, there are a few behaviors that can be missed. Technology solutions help our human proctors identify activities that might violate the test provider’s integrity requirements. All technology alerts must be verified by a human proctor or an exam administrator. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                How does the technology MyProctor uses flag behaviors? </h5>
+                <hr>
+                <p>
+                Our system will flag and timestamp events into an easy-to-read timeline that allows our proctors and test administrators to click and be taken to that moment in the exam recording. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                Are exam video recordings always available? </h5>
+                <hr>
+                <p>
+                Yep. All videos are kept up to a year unless a shorter or longer period is specially requested. We even have a feature called Live Look-In that allows you to watch your test-takers in real time as they complete exams. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                How do you verify test-taker identities? </h5>
+                <hr>
+                <p>
+                We have a couple options available for you to choose from, including public records challenge questions (where available) and keystroke biometrics. We also use ID capture and facial comparison to verify the test-taker. If any of our technology solutions detects a potential mismatch in test-taker identity, our human proctors are alerted (if you are using our Live+ or Review+ service) and can ignore or override the alert or take other action. If you are using our Record+ service, the test administrator is alerted to determine whether further action is needed. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                Do I have to review exam sessions? </h5>
+                <hr>
+                <p>
+                If you’re using our Live+ or Review+ service, our professional proctors will send a report of the sessions that need your attention. If you’re using our Record+ service, the exam administrator is responsible for reviewing every session so you know whether anyone broke exam rules. </p>
+                </div>
+                <div class="qanda">
+                <h5>
+                Can you proctor paper and pencil exams? </h5>
+                <hr>
+                <p>
+                We no longer proctor paper-based exams, but we can help you find a test delivery system to transition your program online. </p>
+                </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="card card-sm card-body border-light">
+        <a href="#panel-4" data-target="#panel-4" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-4">
+            <span class="h6 mb-0 font-weight-bold">Support FAQs</span>
+            <span class="icon"><i class="fas fa-plus"></i></span>
+        </a>
+        <div class="collapse" id="panel-4">
+            <div class="card-body">
+                <div class="qanda">
+                <h5>
+                What kind of technical assistance do you provide? </h5>
+                <hr>
+                <p>
+                Technical and administrative support is available 24/7 by calling 1-855-772-8678, emailing <a href="mailto:care@narenderkeswani.com">care@narenderkeswani.com</a> or by contacting on phone <a href="tel:9320907041"></a></p>
+                </div>
+                </div>
+        </div>
+    </div>
+
+</div>
+</div>
+    </div>
+    </div>
+    </section>
+    </main>
+{% endblock %}

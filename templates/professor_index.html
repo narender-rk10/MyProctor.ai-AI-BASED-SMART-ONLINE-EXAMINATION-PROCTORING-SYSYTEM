@@ -1,0 +1,15 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+<div class="container">
+    <div class="col-12 d-flex align-items-center justify-content-center">
+        <div class="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-650">
+            <center><lottie-player src="https://assets1.lottiefiles.com/packages/lf20_wEt2nn.json"  background="transparent"  speed="1"  style="width: 500px; height: 300px;"  loop  autoplay></lottie-player></center>
+            <div class="text-center text-md-center mb-4 mt-md-0">
+                <h4 class="mb-0 4">Welcome to MyProctor.ai</h4>
+                <br>
+                <h1 class="mb-0 h3">Hi, Professor: {{session.name}}</h1>
+            </div>
+            </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'professor_dashboard.html' %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+<script src="https://js.stripe.com/v3/"></script>
+<script src="{{ url_for('static', filename='stripemain.js') }}"></script>
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+  <div class="col-12 mb-4">
+      <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+          <div class="card-body align-items-center d-flex justify-content-center">     
+              <div class="row mb-4">
+                  <div class="card-body">
+<lottie-player src="https://assets5.lottiefiles.com/private_files/lf30_jq4i7W.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"    autoplay></lottie-player>
+<div class="col-lg-12 col-sm-16"> 
+<h3 class="h3 text-center">
+Your payment was cancelled!
+</h3>
+</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

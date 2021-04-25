@@ -1,0 +1,79 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+            <div class="card-body align-items-center d-flex justify-content-center">     
+                <div class="row mb-4">
+                    {% if(cresults is not none) %}
+    <div class="col-lg-12 col-sm-16">
+        <h3 class="h3 text-center">PUBLISH STUDENT RESULTS</h3>  
+      </div>
+      <form id="prs" action="/publish_results" method="POST">
+        <div class="table-responsive">
+            <table class="table table-centered table-nowrap mb-0 rounded">
+                                <thead class="thead-light">
+        <tr>
+            <th scope="col">Email</th>
+            <th scope="col">Marks</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in callresults %}
+            <tr>
+                <td>{{result['email']}}</td>
+                <td>{{result['marks']}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<input type="hidden" name="testidsp" value="{{tid}}">
+                            </div>
+                            <input type="button" class="btn btn-primary" value="PUBLISH RESULTS" onclick="publishResults()">
+      </form>
+      {% else %}
+      <div class="col-lg-12 col-sm-16">
+        <lottie-player src="https://assets7.lottiefiles.com/datafiles/vhvOcuUkH41HdrL/data.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+          <h3 class="h3 text-center">
+              No Records Found!
+          </h3>  
+        </div>
+      {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function publishResults() {
+swal.fire({
+  title: 'Are you sure?',
+  text: "Do you really want to publish results?",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, Publish Results!',
+  cancelButtonText: 'No!',
+  confirmButtonColor: '#088',
+  cancelButtonColor: '#202124',
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+    document.getElementById("prs").submit();
+      swal.fire(
+      'Success!',
+      'You are successfully publish the results.',
+      'success'
+    )
+  } else if (
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swal.fire(
+      'Cancelled',
+      'Publish results was cancelled.',
+      'error'
+    )
+  }
+})
+}
+</script>
+{% endblock %}

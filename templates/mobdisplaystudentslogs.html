@@ -1,0 +1,112 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+  <div class="col-12 mb-4">
+      <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+          <div class="card-body align-items-center d-flex justify-content-center">     
+              <div class="row mb-4">
+                {% if callresults is not none %}
+                  <div class="col-lg-12 col-sm-16">
+                    <h3 class="h3 text-center">STUDENT PROCTORING LOGS OF {{testid}} - {{name}} - {{email}} [MOBILE FOUND] </h3>  
+                  </div>
+                  <div class="card-body">
+ <div class="row"> 
+      {% for res in callresults%}
+      <div class="col-6"> 
+      <div class="card card-body shadow-sm mb-4">
+        <div class="form-group">
+        <img src="data:image/jpeg;base64,{{ res['img_log'] }}" alt="img_data" width="320px" height="320px"  id="imgslot"/><br>
+        </div>
+
+        <div class="form-group">
+        <h5 class="h5">
+          <span class="fas fa-eye"></span> EYES:
+        {% if res['user_movements_eyes'] == 1 %}
+        BLINKING
+        {% elif res['user_movements_eyes'] == 4 %}
+        LOOKING RIGHT
+        {% elif res['user_movements_eyes'] == 3 %}
+        LOOKING LEFT
+        {% elif res['user_movements_eyes'] == 2 %}
+        LOOKING CENTER
+        {% else %}
+        NOT FOUND!
+        {% endif %}
+        </h5>
+        </div>
+
+        <div class="form-group">
+        <h5 class="h5">
+          <span class="fas fa-user"></span>
+          HEAD [UP/DOWN]:
+        {% if res['user_movements_updown'] == 1 %}
+        UP
+        {% elif res['user_movements_updown'] == 2 %}
+        DOWN
+        {% else %}
+        NOT FOUND!
+        {% endif %}
+        </h5>
+        </div>
+
+        <div class="form-group">
+        <h5 class="h5">
+          <span class="fas fa-user"></span>
+          HEAD [LEFT/RIGHT]:
+        {% if res['user_movements_lr'] == 4 %}
+        RIGHT
+        {% elif res['user_movements_lr'] == 3 %}
+        LEFT
+        {% else %}
+        NOT FOUND!
+        {% endif %}
+        </h5>
+        </div>
+
+        <div class="form-group">
+        {% if res['phone_detection'] == 1 %}
+        <h5 class="text-danger"><span class="fas fa-mobile-alt"></span> MOBILE: MOBILE DETECTED!</h5>
+       
+        {% elif res['phone_detection'] == 0 %}
+        <h5 class="h5"><span class="fas fa-mobile-alt"></span> MOBILE: NO MOBILE DETECTED!</h5>
+
+        {% else %}
+        <h5 class="h5"><span class="fas fa-mobile-alt"></span> MOBILE: NOT FOUND!</h5>
+
+        {% endif %}
+        </div>
+
+        <div class="form-group">
+        {% if res['person_status'] == 1 %}
+        <h5 class="text-danger"><span class="fas fa-people-carry"></span> PERSON: MORE THAN 1 PERSON DETECTED</h5>
+
+        {% else %}
+        <h5 class="h5"><span class="fas fa-people-carry"></span> PERSON: NORMAL</h5>
+
+        {% endif %}
+        </div>
+
+        <div class="form-group">
+          <h5 class="h5">
+          <span class="fas fa-clock"></span> TRANSACTION TIME: {{res['log_time']}}
+      </h5>
+        </div>
+      </div>
+       </div> 
+      {% endfor %}
+ </div> 
+                  </div>
+              </div>
+              {% else %}
+                    <div class="col-lg-12 col-sm-16">
+                        <center><lottie-player src="https://assets7.lottiefiles.com/datafiles/vhvOcuUkH41HdrL/data.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player></center>
+                        <h3 class="h3 text-center">
+                            No Records Found!
+                        </h3>  
+                      </div>
+                    {% endif %}
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

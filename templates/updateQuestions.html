@@ -1,0 +1,86 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+            <div class="card-body align-items-center d-flex justify-content-center">     
+                <div class="row mb-4">
+                    <div class="col-lg-12 col-sm-16">
+							<h3 class="h3 text-center">UPDATE QUESTIONS</h3>  
+                            </div>
+                            <div class="card-body">
+							    <form action="" method="POST" class="mt-4">
+                                    {% for uresults in uresults %}
+                                    <div class="form-group">
+                                        <label for="exampleInputIcon3">Question {{uresults['qid']}} of {{uresults['test_id']}}</label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Question</span>
+                                            </div>
+                                            <input name="ques" value="{{uresults['q']}}" class="form-control" placeholder="QUESTION:" type="text" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleInputIcon3">OPTION A</label>
+                                      <div class="input-group mb-4">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text">A</span>
+                                          </div>
+                                          <input name="ao" value="{{uresults['a']}}" type="text" class="form-control" placeholder="OPTION A:"/>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleInputIcon3">OPTION B</label>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">B</span>
+                                        </div>
+                                        <input name="bo" value="{{uresults['b']}}" type="text" class="form-control"  placeholder="OPTION B:"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputIcon3">OPTION C</label>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-text">
+                                            <span class="input-group-prepend">C</span>
+                                        </div>
+                                        <input name="co" value="{{uresults['c']}}" type="text" class="form-control"  placeholder="OPTION C:"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputIcon3">OPTION D</label>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">D</span>
+                                        </div>
+                                        <input name="do" value="{{uresults['d']}}" type="text" class="form-control" placeholder="OPTION D:"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputIcon3">ANSWER</label>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Answer</span>
+                                        </div>
+                                        <input name="anso" value="{{uresults['ans']}}" type="text" class="form-control" placeholder="ANSWER:"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputIcon3">MARKS</label>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Marks</span>
+                                        </div>
+                                        <input name="mko" value="{{uresults['marks']}}" type="number" class="form-control" placeholder="MARKS:"/>
+                                    </div>
+                                </div>         
+  <input type="submit" class="btn btn-primary" value="UPDATE!">
+    </form>
+    {% endfor %}
+  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+{% endblock %}

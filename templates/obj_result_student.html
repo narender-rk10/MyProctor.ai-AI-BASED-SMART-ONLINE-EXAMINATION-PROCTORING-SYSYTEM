@@ -1,0 +1,49 @@
+{% extends 'student_dashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+            <div class="card-body align-items-center d-flex justify-content-center">     
+                <div class="row mb-4">
+    <div class="col-lg-12 col-sm-16">
+        <h3 class="h3 text-center">STUDENT RESULTS [OBJECTIVE]</h3>  
+      </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example" class="display nowrap" style="width:100%">
+                <thead class="thead-light">
+                    <tr>
+                                <th class="border-0" scope="col" >Test ID</th>
+                                <th class="border-0" scope="col" >Subject</th>
+                                <th class="border-0" scope="col" >Topic</th>
+								<th class="border-0" scope="col" >Marks</th>
+                            </tr>
+							 <tbody>
+            {% for test, test1 in tests %}
+                            <tr>
+								<td>{{test['test_id']}}</td>
+								<td>{{test['subject']}}</td> 
+								<td>{{test['topic']}}</td> 
+                                <td>{{ test1 }}</td>
+                             </tr>
+            {% endfor %}
+                                  </tbody>
+                        </table>
+                    </div>
+                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+</script>
+{% endblock %}

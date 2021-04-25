@@ -1,0 +1,39 @@
+{% extends 'professor_dashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+            <div class="card-body align-items-center d-flex justify-content-center">     
+                <div class="row mb-4">
+                    {% if(testid) %}
+                    <div class="col-lg-12 col-sm-16">
+                      <h3 class="h3 text-center">LIVE MONITORING of EXAM-ID: {{testid}} </h3>  
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="container">
+                              <div class="justify-content-center align-items-center">
+                                <div id="otEmbedContainer"  id ="livecheck" style="width:650px; height:1000px;">
+                                <script src="https://tokbox.com/embed/embed/ot-embed.js?embedId=2020dbd9-0a89-472d-a60b-ca12ddfd48bc&room={{testid}}"></script>
+                              </div>
+                              </div>
+                            </div>
+                    </div>
+                    </div>
+                    {% else %}
+                    <div class="col-lg-12 col-sm-16">
+                        <h3 class="h3 text-center">
+                            No Records Found!
+                            <br>
+                            Or
+                            <br>
+                            Note: Only Live Exam ID's are shown between duration of the Exam.
+                        </h3>  
+                      </div>
+                    {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends 'layout.html' %}
+{% block body %}
+ <main>
+ <section class="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
+            <div class="container">
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <div class="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-650">
+                            <div class="text-center text-md-center mb-4 mt-md-0">
+                                <h1 class="mb-0 h3">Sign in to our platform</h1>
+                            </div>
+							<img src="{{ url_for('static', filename='secure_login.png') }}">
+              <div class="card-body">
+                            <form action="" method="POST" class="mt-4">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><span class="fas fa-envelope"></span></span>
+                                        </div>
+									<input name="email" class="form-control" placeholder="example@company.com" type="text" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><span class="fas fa-unlock-alt"></span></span>
+                                            </div>
+									<input name="password" type="text" class="form-control" placeholder="Password" style="-webkit-text-security:disc;" aria-label="Password" required>                                        </div>
+                                </div>
+                                </div>
+
+                                    <div class="form-group">
+                                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Choose User Type</label>
+                                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="user_type" required>
+                                            <option value="student">Student</option>
+                                            <option value="teacher">Professor</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <video id="stream" width="370" height="320">
+                                            <canvas id="capture" width="370" height="320">
+                                            </canvas>
+                                          </video>
+                                            <button id="btn-capture" type="button" class="btn btn-primary justify-content-center">Capture Image</button>
+                                        <br><br>
+                                            <div id="snapshot"></div>
+                                        <input type="hidden" id="image_hidden" name="image_hidden">
+                                        </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div><a href="/lostpassword" class="font-weight-bold">Lost password?</a></div>
+                                </div>
+                            <button type="submit" class="btn btn-block btn-primary">Sign in</button>
+                        </form>
+             
+                        <div class="d-block d-sm-flex justify-content-center align-items-center mt-4">
+                            <span class="font-weight-normal">
+                                Not registered?
+                             <a href="/register" class="font-weight-bold">Create account</a>
+                            </span>
+                        </div>
+              </div>
+  </div>
+  <div>
+  </div>
+</div>
+</section>
+</main>
+<script>
+    var btnCapture = document.getElementById("btn-capture");
+    var stream = document.getElementById("stream");
+    var capture = document.getElementById("capture");
+    var snapshot = document.getElementById("snapshot");
+    var cameraStream = null;
+    
+    btnCapture.addEventListener( "click", captureSnapshot );
+
+    function startStreaming() {
+    
+      var mediaSupport = 'mediaDevices' in navigator;
+    
+      if( mediaSupport && null == cameraStream ) {
+    
+        navigator.mediaDevices.getUserMedia( { video: true } )
+        .then( function( mediaStream ) {
+          cameraStream = mediaStream;
+          stream.srcObject = mediaStream;
+          stream.play();
+        })
+        .catch( function( err ) {
+          console.log( "Unable to access camera: " + err );
+        });
+      }
+      else {
+        alert( 'Your browser does not support media devices.' );
+        return;
+      }
+    }
+    
+    function stopStreaming() {
+      if( null != cameraStream ) {
+        var track = cameraStream.getTracks()[ 0 ];
+        track.stop();
+        stream.load();
+        cameraStream = null;
+      }
+    }
+    
+    function captureSnapshot() {
+      if( null != cameraStream ) {
+        var ctx = capture.getContext( '2d' );
+        var img = new Image();
+        ctx.drawImage( stream, 0, 0, capture.width, capture.height );
+        img.src		= capture.toDataURL( "image/png" );
+        img.width	= 370;
+        img.height	= 320;
+        //console.log(capture.toDataURL( "image/png" ));
+        snapshot.innerHTML = '';
+        snapshot.appendChild( img );
+        var d1 = capture.toDataURL("image/png");
+        var res = d1.replace("data:image/png;base64,", "");
+        console.log(res);
+        snapshot.innerHTML = '';
+        snapshot.appendChild( img );
+        $("#image_hidden").val(res)    
+      }
+    }
+    window.onload = function() {
+       startStreaming();
+       captureSnapshot();
+    }
+    </script>
+{% endblock %}
