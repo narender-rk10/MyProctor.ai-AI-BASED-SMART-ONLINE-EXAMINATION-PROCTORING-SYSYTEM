@@ -39,8 +39,8 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 app.config['MAIL_SERVER']='smtp.stackmail.com'
 app.config['MAIL_PORT'] = 587
-app.config['MAIL_USERNAME'] = 'care@narenderkeswani.com'
-app.config['MAIL_PASSWORD'] = 'Narender@boi'
+app.config['MAIL_USERNAME'] = 'care@youremail.com'
+app.config['MAIL_PASSWORD'] = 'password'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
@@ -51,8 +51,8 @@ app.config['SESSION_TYPE'] = 'filesystem'
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 stripe_keys = {
-    "secret_key": "sk_test_51ISHOsAGsy3DJu1jMHi9VbimLdGCfr8SNTcHbA8RyzSlKeOntyZdH5gDXihvlztkofIyQCb352rnvCVvzLu22cGH006uBjXEQr",
-    "publishable_key": "pk_test_51ISHOsAGsy3DJu1jc1IfuLYDkED8d1QPRl5e8RTU7mdcZpELeGEysYFH4NfjLoPiIkRpghWUHmUH7QpOk1sgzM8X00prZwtaX9",
+    "secret_key": "dummy",
+    "publishable_key": "dummy",
 }
 
 stripe.api_key = stripe_keys["secret_key"]
@@ -69,7 +69,7 @@ app.secret_key= 'sem6project'
 
 mysql = MySQL(app)
 
-sender = 'care@narenderkeswani.com'
+sender = 'youremail@abc.com'
 
 YOUR_DOMAIN = 'http://localhost:5000'
 
