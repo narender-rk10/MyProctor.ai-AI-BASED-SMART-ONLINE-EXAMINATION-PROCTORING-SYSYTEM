@@ -33,7 +33,7 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PORT'] = 3308
-app.config['MYSQL_PASSWORD'] = 'Narend-10'
+app.config['MYSQL_PASSWORD'] = 'your pwd'
 app.config['MYSQL_DB'] = 'quizapp'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
