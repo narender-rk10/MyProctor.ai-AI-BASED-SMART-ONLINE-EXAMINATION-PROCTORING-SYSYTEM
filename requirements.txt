@@ -1,0 +1,14 @@
+Werkzeug==1.0.1
+Flask_WTF==0.14.3
+coolname==1.1.0
+WTForms_Components==0.10.4
+WTForms==2.2.1
+Flask==1.0.2
+Flask_MySQLdb==0.2.0
+Tensorflow==2.4
+sklearn  
+pyaudio
+nltk
+numpy
+pandas
+dlib
