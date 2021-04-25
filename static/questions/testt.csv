@@ -1,0 +1,17 @@
+qid,q,a,b,c,d,ans,marks
+1,It uses multiple OS on Single Machine,Hypervisor,Virtualization,Cloud,Management,b,1
+2,It is virtualizing your server infrastructure where you do not have to use any more physical servers for different purposes.,Network Virtualization,Sever Virtualization,Storage Virtualization,Client &Sever Virtualization,b,2
+3,It creates a virtual platform on the host computer on top of which multiple guest operating systems are executed and monitored.,Virtual Machine Manager,Virtual Machine Monitor,Virtual Management Monitor,Virtual Management Manager,b,1
+4,These software systems that run directly on the hosts hardware to control the hardware and to monitor theÿGuest Operating Systems.,Naive Hyper supervisor,Virtual Supervisor,Client Supervisior,Hosted Supervisior,a,1
+5,It reduces carbon footprint and helps to clean up the air we breathe.,Deploying Severs,Energy Consumption,Save Energy,Storage Energy,c,2
+6,It is a set of tools that you should install or upgrade on the VM so that the VM OS will be able to detect the virtualization stack and run as a regular OS on a given hardware.,Service Provider,Integration Components,Component Hardware,Hosted software,b,1
+7,It is  a minmal base for building arbitrary systems,MicroKernel,Microprocessor,Hardware,Software,a,2
+8,It is used to provide robust separation between guest environments.,Type 1 Architecture,Type 4 Architecture,Type 2 Architecture,Type 3 Architecture,b,2
+9,when the file size is constant and the number of files is increased is called as ______,File Transfer Workload,Transfer Management,Accessing files,Files reload,a,1
+10,It is a mage file consisting of a pre-configured operating system (OS) environment and a single application,Resources,Installation,Virtual Appliance,Loading process,c,2
+11,This technology is the delivery of shared resources as a service-on-demand via the internet.,Cloud,Virtualization,Processes,Resources,a,1
+12,Selection of the appropriate resource is also required to be done carefully for cloud operation management.,Proper Resource Selection,Time constraint,Security,Processes,a,1
+13,They are meant to detect and react instantly & appropriately to any incident.,Preventive Control,Detective Control:,Deterrent Controlÿ,Corrective Controlÿ,b,2
+14,__________protects data from being compromised.,Encryption,Decryption,Merging,Changing,a,2
+15,It is used by one client only like a local hard disk.,Common Virtual Disk,Shared Virtual Disk,Private Virtual Disk,Public virtual Disk,c,1
+16,Here the processing workloads are distributed among different physical servers and their results are then collected as one.,Grid Approach,Table Approach,View Approach,Disk Approach,a,1
