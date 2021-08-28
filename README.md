@@ -5,6 +5,9 @@
 
 https://youtu.be/E117db5VsTs
 
+# MODEL LINK YOLO V4:
+https://pjreddie.com/media/files/yolov3.weights
+
 ## PROPOSED SYSTEM
 # A) Authentication with Image Verification
 1) Basic Login, Register, Forgot Password, Change Password, etc
