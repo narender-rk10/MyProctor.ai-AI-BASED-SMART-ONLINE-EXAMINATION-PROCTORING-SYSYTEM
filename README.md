@@ -5,7 +5,7 @@
 
 https://youtu.be/E117db5VsTs
 
-# MODEL LINK YOLO V4:
+# MODEL LINK YOLO V3:
 https://pjreddie.com/media/files/yolov3.weights
 
 ## PROPOSED SYSTEM
