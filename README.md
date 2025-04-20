@@ -62,7 +62,10 @@ https://pjreddie.com/media/files/yolov3.weights
 7) CUT, COPY, PASTE, Taking Screenshots Function is disabled.
 8) VM detection & Detection of Screen-Sharing applications. [Support Desktop App Only]
 
+# 📈 Star Growth Over Time
+[![GitHub Stars](https://img.shields.io/github/stars/narender-rk10/MyProctor.ai-AI-BASED-SMART-ONLINE-EXAMINATION-PROCTORING-SYSYTEM?style=social)](https://github.com/narender-rk10/MyProctor.ai-AI-BASED-SMART-ONLINE-EXAMINATION-PROCTORING-SYSYTEM/stargazers)
 
+[![Star History Chart](https://api.star-history.com/svg?repos=narender-rk10/MyProctor.ai-AI-BASED-SMART-ONLINE-EXAMINATION-PROCTORING-SYSYTEM&type=Date)](https://star-history.com/#narender-rk10/MyProctor.ai-AI-BASED-SMART-ONLINE-EXAMINATION-PROCTORING-SYSYTEM&Date)
 
 
 # Screenshots of SYSTEM:
