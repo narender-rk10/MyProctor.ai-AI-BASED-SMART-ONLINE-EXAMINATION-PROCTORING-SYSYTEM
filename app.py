@@ -460,7 +460,7 @@ def verifyEmail():
 			ar = cur.execute('INSERT INTO users(name, email, password, user_type, user_image, user_login) values(%s,%s,%s,%s,%s,%s)', (dbName, dbEmail, dbPassword, dbUser_type, dbImgdata,0))
 			mysql.connection.commit()
 			if ar > 0:
-				flash("Thanks for registering! You are sucessfully verified!.")
+				flash("Thanks for registering! You are successfully verified!.")
 				return  redirect(url_for('login'))
 			else:
 				flash("Error Occurred!")
@@ -1110,7 +1110,7 @@ def insertsubmarks(testid,email):
 			cur.execute('UPDATE longtest SET marks = %s WHERE test_id = %s and email = %s and qid = %s', (marksByProfessor, testid, email, sa))
 			mysql.connection.commit()
 		cur.close()
-		flash('Marks Entered Sucessfully!', 'success')
+		flash('Marks Entered successfully!', 'success')
 		return redirect(url_for('insertmarkstid'))
 
 @app.route('/insertpracmarks/<testid>/<email>', methods=['GET','POST'])
@@ -1133,7 +1133,7 @@ def insertpracmarks(testid,email):
 			cur.execute('UPDATE practicaltest SET marks = %s WHERE test_id = %s and email = %s and qid = %s', (marksByProfessor, testid, email, sa))
 			mysql.connection.commit()
 		cur.close()
-		flash('Marks Entered Sucessfully!', 'success')
+		flash('Marks Entered successfully!', 'success')
 		return redirect(url_for('insertmarkstid'))
 
 def displaywinstudentslogs(testid,email):
@@ -1265,7 +1265,7 @@ def share_details_emails():
 		msg1 = Message('EXAM DETAILS - MyProctor.ai', sender = sender, recipients = [emailssharelist])
 		msg1.body = " ".join(["EXAM-ID:", tid, "SUBJECT:", subject, "TOPIC:", topic, "DURATION:", duration, "START", start, "END", end, "PASSWORD", password, "NEGATIVE MARKS in %:", neg_marks,"CALCULATOR ALLOWED:",calc ]) 
 		mail.send(msg1)
-		flash('Emails sended sucessfully!', 'success')
+		flash('Emails sent successfully!', 'success')
 	return render_template('share_details.html')
 
 @app.route("/publish-results-testid", methods=['GET','POST'])
@@ -1318,7 +1318,7 @@ def publish_results():
 		cur.execute('UPDATE teachers set show_ans = 1 where test_id = %s', ([tidoption]))
 		mysql.connection.commit()
 		cur.close()
-		flash("Results published sucessfully!")
+		flash("Results published successfully!")
 		return redirect(url_for('professor_index'))
 
 @app.route('/test_update_time', methods=['GET','POST'])
